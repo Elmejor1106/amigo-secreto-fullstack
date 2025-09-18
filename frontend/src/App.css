@@ -6,8 +6,8 @@
 }
 
 body {
-  background-color: #f4f7f6;
-  color: #333;
+  background-color: #fdf6f6; /* Fondo rojo pastel muy claro */
+  color: #5D4037; /* Texto principal - marrón oscuro */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
   padding: 0;
@@ -16,7 +16,7 @@ body {
 
 /* --- Encabezado --- */
 .App-header {
-  background-color: #2c3e50;
+  background-color: #e57373; /* Rojo pastel principal */
   padding: 20px;
   color: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -43,20 +43,20 @@ main {
   margin-bottom: 30px;
 }
 
-.left-panel, .right-panel {
+.left-panel, .right-panel, .draw-section {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   flex: 1;
-  min-width: 300px; /* Asegura que no se encoja demasiado en pantallas grandes */
+  min-width: 300px;
 }
 
 /* --- Títulos de Sección --- */
 .participant-form h3, .participant-list h3, .restrictions h3, .settings h3 {
   margin-top: 0;
-  color: #34495e;
-  border-bottom: 2px solid #ecf0f1;
+  color: #5D4037; /* Marrón oscuro */
+  border-bottom: 2px solid #E0E0E0; /* Gris claro */
   padding-bottom: 10px;
 }
 
@@ -94,31 +94,31 @@ main {
 }
 
 .participant-form button {
-  background-color: #3498db;
+  background-color: #e57373; /* Rojo pastel principal */
 }
 .participant-form button:hover {
-  background-color: #2980b9;
+  background-color: #d85a5a; /* Rojo pastel más oscuro */
 }
 
 .restriction-form {
   display: flex;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
 }
 
 .restriction-form select {
-  flex: 1; /* Permite que los selects crezcan */
-  min-width: 150px; /* Evita que se encojan demasiado */
+  flex: 1;
+  min-width: 150px;
 }
 
 .restriction-form button {
-  background-color: #9b59b6;
-  flex-grow: 1; /* El botón también puede crecer */
+  background-color: #bcaaa4; /* Tono tierra/marrón pastel */
+  flex-grow: 1;
 }
 
 .restriction-form button:hover {
-  background-color: #8e44ad;
+  background-color: #a1887f;
 }
 
 /* --- Listas --- */
@@ -133,8 +133,8 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 12px 10px;
-  border-bottom: 1px solid #ecf0f1;
-  word-break: break-word; /* Evita que los correos largos se desborden */
+  border-bottom: 1px solid #f5f5f5;
+  word-break: break-word;
 }
 
 .participant-list li:last-child, .restriction-list li:last-child {
@@ -142,7 +142,7 @@ main {
 }
 
 .remove-btn {
-  background: #e74c3c;
+  background: #ef9a9a; /* Rojo pastel claro */
   color: white;
   border: none;
   border-radius: 50%;
@@ -151,36 +151,33 @@ main {
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s;
-  flex-shrink: 0; /* Evita que el botón se encoja */
+  flex-shrink: 0;
   margin-left: 10px;
 }
 
 .remove-btn:hover {
-  background: #c0392b;
+  background: #e57373;
 }
 
 /* --- Sección de Sorteo --- */
 .draw-section {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   margin-top: 20px;
   text-align: center;
 }
 
 .draw-button {
   padding: 15px 30px;
-  background-color: #27ae60;
+  background-color: #d32f2f; /* Rojo más intenso para el botón principal */
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 1.2rem;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 20px;
   width: 100%;
-  max-width: 400px; /* Limita el ancho en pantallas grandes */
+  max-width: 400px;
 }
 
 .draw-button:disabled {
@@ -189,7 +186,7 @@ main {
 }
 
 .draw-button:not(:disabled):hover {
-  background-color: #229954;
+  background-color: #b71c1c; /* Rojo más oscuro al pasar el mouse */
 }
 
 /* --- Mensajes de Resultado --- */
@@ -202,15 +199,15 @@ main {
 }
 
 .result-message.success {
-  background-color: #e8f8f5;
-  color: #27ae60;
-  border: 1px solid #a3e4d7;
+  background-color: #C8E6C9; /* Verde pastel */
+  color: #2E7D32;
+  border: 1px solid #a5d6a7;
 }
 
 .result-message.error {
-  background-color: #fdedec;
-  color: #e74c3c;
-  border: 1px solid #f5b7b1;
+  background-color: #FFCDD2; /* Rojo pastel claro */
+  color: #C62828;
+  border: 1px solid #ef9a9a;
 }
 
 /* --- Ajustes (Settings) --- */
