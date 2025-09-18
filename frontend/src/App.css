@@ -1,20 +1,26 @@
+/* --- Reset y Estilos Globales --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #f4f7f6;
   color: #333;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
-.App {
-  text-align: center;
-}
-
+/* --- Encabezado --- */
 .App-header {
   background-color: #2c3e50;
   padding: 20px;
   color: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .App-header h1 {
@@ -22,6 +28,7 @@ body {
   font-size: 2rem;
 }
 
+/* --- Contenedor Principal --- */
 main {
   padding: 20px;
   max-width: 1200px;
@@ -30,6 +37,7 @@ main {
 
 .main-container {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 30px;
@@ -41,34 +49,42 @@ main {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   flex: 1;
-  min-width: 300px;
+  min-width: 300px; /* Asegura que no se encoja demasiado en pantallas grandes */
 }
 
-/* Formulario de Participantes */
-.participant-form h3, .participant-list h3 {
+/* --- Títulos de Sección --- */
+.participant-form h3, .participant-list h3, .restrictions h3, .settings h3 {
   margin-top: 0;
   color: #34495e;
   border-bottom: 2px solid #ecf0f1;
   padding-bottom: 10px;
 }
 
-.participant-form {
+/* --- Formularios --- */
+.participant-form, .restriction-form, .setting-item {
   margin-bottom: 20px;
 }
 
-.participant-form input {
-  width: calc(100% - 22px);
-  padding: 10px;
-  margin-bottom: 10px;
+.participant-form input, 
+.setting-item input,
+.setting-item textarea,
+.restriction-form select {
+  width: 100%;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
+  margin-bottom: 10px;
 }
 
-.participant-form button {
+.setting-item textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.participant-form button, .restriction-form button {
   width: 100%;
   padding: 12px;
-  background-color: #3498db;
   color: white;
   border: none;
   border-radius: 4px;
@@ -77,26 +93,51 @@ main {
   transition: background-color 0.3s;
 }
 
+.participant-form button {
+  background-color: #3498db;
+}
 .participant-form button:hover {
   background-color: #2980b9;
 }
 
-/* Lista de Participantes */
-.participant-list ul {
+.restriction-form {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  gap: 10px;
+  align-items: center;
+}
+
+.restriction-form select {
+  flex: 1; /* Permite que los selects crezcan */
+  min-width: 150px; /* Evita que se encojan demasiado */
+}
+
+.restriction-form button {
+  background-color: #9b59b6;
+  flex-grow: 1; /* El botón también puede crecer */
+}
+
+.restriction-form button:hover {
+  background-color: #8e44ad;
+}
+
+/* --- Listas --- */
+.participant-list ul, .restriction-list ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.participant-list li {
+.participant-list li, .restriction-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 12px 10px;
   border-bottom: 1px solid #ecf0f1;
+  word-break: break-word; /* Evita que los correos largos se desborden */
 }
 
-.participant-list li:last-child {
+.participant-list li:last-child, .restriction-list li:last-child {
   border-bottom: none;
 }
 
@@ -110,24 +151,22 @@ main {
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s;
+  flex-shrink: 0; /* Evita que el botón se encoja */
+  margin-left: 10px;
 }
 
 .remove-btn:hover {
   background: #c0392b;
 }
 
-/* Sección de Sorteo */
+/* --- Sección de Sorteo --- */
 .draw-section {
   background: white;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   margin-top: 20px;
-}
-
-.draw-section h2 {
-  margin-top: 0;
-  color: #34495e;
+  text-align: center;
 }
 
 .draw-button {
@@ -140,6 +179,8 @@ main {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 20px;
+  width: 100%;
+  max-width: 400px; /* Limita el ancho en pantallas grandes */
 }
 
 .draw-button:disabled {
@@ -151,12 +192,13 @@ main {
   background-color: #229954;
 }
 
-/* Mensajes de Resultado */
+/* --- Mensajes de Resultado --- */
 .result-message {
   margin-top: 20px;
   padding: 15px;
   border-radius: 5px;
   font-weight: 500;
+  text-align: center;
 }
 
 .result-message.success {
@@ -171,63 +213,8 @@ main {
   border: 1px solid #f5b7b1;
 }
 
-/* Estilos para Restricciones y Ajustes */
-.restrictions, .settings {
-  margin-bottom: 20px;
-}
-
-.restrictions h3, .settings h3 {
-  margin-top: 0;
-  color: #34495e;
-  border-bottom: 2px solid #ecf0f1;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-}
-
-.restriction-form {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.restriction-form select {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.restriction-form button {
-  padding: 10px 15px;
-  background-color: #9b59b6;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.restriction-form button:hover {
-  background-color: #8e44ad;
-}
-
-.restriction-list ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.restriction-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ecf0f1;
-}
-
+/* --- Ajustes (Settings) --- */
 .setting-item {
-  margin-bottom: 15px;
   text-align: left;
 }
 
@@ -238,15 +225,17 @@ main {
   color: #555;
 }
 
-.setting-item input, .setting-item textarea {
-  width: calc(100% - 22px);
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-}
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
 
-.setting-item textarea {
-  resize: vertical;
-  min-height: 80px;
+  .App-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .draw-button {
+    font-size: 1rem;
+  }
 }
