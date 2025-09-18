@@ -49,8 +49,8 @@ app.post('/api/draw', (req, res) => {
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'juandavidduranmalaver@gmail.com', // <-- REEMPLAZA ESTO
-    pass: 'ltngabbkiwxeyspk'   // <-- REEMPLAZA ESTO
+    user: process.env.EMAIL_USER, // <-- Se configurará en Render
+    pass: process.env.EMAIL_PASS   // <-- Se configurará en Render
   }
 });
 
@@ -77,7 +77,7 @@ ${message}` : ''}
     `;
 
     const mailOptions = {
-      from: 'Amigo Secreto App <juandavidduranmalaver@gmail.com>', // <-- REEMPLAZA ESTO
+      from: `Amigo Secreto App <${process.env.EMAIL_USER}>`,
       to: giver.email,
       subject: subject,
       html: body.replace(/\n/g, '<br>') // Reemplazar saltos de línea por <br> para el formato HTML
